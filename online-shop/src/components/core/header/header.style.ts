@@ -5,18 +5,26 @@ const styles = createUseStyles({
     position: "relative",
 
     minHeight: 100,
+    height: "16vh",
+
     background: "linear-gradient(180deg,#ff9900,#fdd96c)",
     // linear-gradient(180deg,#f7a428,#fbfd6c)
     color: "white",
     fontWeight: "bold",
     fontSize: 18,
 
-    padding: "35px 2%",
+    padding: "25px 2%",
   },
   header__inner: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "space-between",
+    justifyContent: "space-between",
+
     maxWidth: 1200,
     minWidth: 300,
     width: "100%",
+    height: "100%",
 
     margin: "0 auto",
   },
@@ -73,6 +81,48 @@ const styles = createUseStyles({
   "@media (min-width: 1024px)": {
     info__item: {
       width: "40%",
+    },
+  },
+});
+
+export const userInteractionsStyles = createUseStyles({
+  header__userInteractions: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    fontSize: 16,
+  },
+  userInteractions__item: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    borderRadius: 30,
+    color: "#222121",
+    border: "2px solid #cacaca",
+    padding: 10,
+
+    "&:hover": {
+      cursor: "pointer",
+      border: "2px solid #ff5b00",
+    },
+  },
+
+  userInteractions__catalog: {},
+
+  "@media (min-width: 425px)": {
+    userInteractions__catalog: {
+      display: "inline",
+    },
+  },
+  "@media (max-width: 600px)": {
+    userInteractions__item: {
+      width: 25,
+
+      "& span": {
+        display: "none",
+      },
     },
   },
 });
