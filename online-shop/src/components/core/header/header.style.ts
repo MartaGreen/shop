@@ -5,9 +5,13 @@ const styles = createUseStyles({
     position: "relative",
 
     minHeight: 100,
-    background: "linear-gradient(180deg,#f7a428,#fbfd6c)",
+    background: "linear-gradient(180deg,#ff9900,#fdd96c)",
+    // linear-gradient(180deg,#f7a428,#fbfd6c)
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
 
-    padding: "4% 2%",
+    padding: "35px 2%",
   },
   header__inner: {
     maxWidth: 1200,
@@ -15,6 +19,25 @@ const styles = createUseStyles({
     width: "100%",
 
     margin: "0 auto",
+  },
+  header__dividingLine: {
+    position: "absolute",
+    top: "45%",
+    left: 0,
+    height: 1,
+    width: "100vw",
+
+    background: "white",
+  },
+
+  header__loaction: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+
+    "& svg": {
+      fill: "white",
+    },
   },
 
   header__info: {
@@ -33,9 +56,16 @@ const styles = createUseStyles({
   },
   info__time: {
     fontSize: 11,
+    fontWeight: "normal",
+    color: "black",
   },
 
   "@media (max-width: 768px)": {
+    info__item: {
+      width: "60%",
+    },
+  },
+  "@media (max-width: 425px)": {
     info__time: {
       display: "none",
     },

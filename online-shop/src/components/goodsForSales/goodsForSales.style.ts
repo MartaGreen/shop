@@ -7,13 +7,13 @@ const styles = createUseStyles({
     height: 300,
 
     border: "1px solid gray",
-    margin: 10,
     borderRadius: 7,
 
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "space-between",
     alignItems: "center",
+    marginTop: 30,
+    marginLeft: "2%",
   },
   carousel__title: {
     width: "100%",
@@ -26,9 +26,7 @@ const styles = createUseStyles({
   },
   carousel: {
     position: "relative",
-
     width: "80%",
-    height: 200,
   },
   carouselItem: {
     height: 200,
@@ -48,6 +46,28 @@ const styles = createUseStyles({
     right: 25,
 
     zIndex: 1000,
+  },
+
+  "@media (max-width: 425px)": {
+    carouselContainer: {
+      margin: "30px auto",
+    },
+  },
+  "@media (min-width: 768px)": {
+    carouselContainer: {
+      width: 500,
+      height: 500,
+
+      marginLeft: "2%",
+    },
+    carouselItem: {
+      height: 400,
+    },
+  },
+  "@media (min-width: 1200px)": {
+    carouselContainer: {
+      marginLeft: 0,
+    },
   },
 });
 

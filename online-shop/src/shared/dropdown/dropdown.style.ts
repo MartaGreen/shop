@@ -5,7 +5,7 @@ const style = createUseStyles({
     position: "relative",
 
     color: "rgb(71, 70, 70)",
-    fontSize: 14,
+    fontSize: 15,
 
     "&:hover": {
       cursor: "pointer",
