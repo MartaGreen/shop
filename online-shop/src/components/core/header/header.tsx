@@ -8,6 +8,8 @@ import styles, { userInteractionsStyles } from "./header.style";
 import Dropdown from "../../../shared/dropdown/dropdown";
 import { paymentDropdown, contactDropdown } from "./headerData";
 
+import SearchField from "./searchField/searchField";
+
 function Header() {
   const [city, setCity] = useState("");
   useEffect(() => {
@@ -95,8 +97,10 @@ s2.5,1.1,2.5,2.5S13.4,11.5,12,11.5z"
           </div>
 
           {/* search field */}
-          <div style={{ width: "50%" }}>
-            <input style={{ width: "95%" }} type="text" />
+          <div
+            style={{ width: "50%", display: "flex", justifyContent: "center" }}
+          >
+            <SearchField />
           </div>
 
           {/* user */}

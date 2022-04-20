@@ -7,7 +7,9 @@ const styles = createUseStyles({
     minHeight: 100,
     height: "16vh",
 
-    background: "linear-gradient(180deg,#ff9900,#fdd96c)",
+    background: "linear-gradient(180deg,#ff7700,#fdd26c)",
+    // linear-gradient(180deg,#ff7700,#fdd26c)
+    // linear-gradient(180deg,#ff9900,#fdd96c)
     // linear-gradient(180deg,#f7a428,#fbfd6c)
     color: "white",
     fontWeight: "bold",
@@ -92,6 +94,7 @@ export const userInteractionsStyles = createUseStyles({
     alignItems: "center",
 
     fontSize: 16,
+    fontWeight: "normal",
   },
   userInteractions__item: {
     display: "flex",
@@ -100,7 +103,7 @@ export const userInteractionsStyles = createUseStyles({
 
     borderRadius: 30,
     color: "#222121",
-    border: "2px solid #cacaca",
+    border: "2px solid #b3b1b1",
     padding: 10,
 
     "&:hover": {

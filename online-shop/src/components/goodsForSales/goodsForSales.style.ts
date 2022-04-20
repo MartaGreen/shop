@@ -6,23 +6,29 @@ const styles = createUseStyles({
     width: 300,
     height: 300,
 
-    border: "1px solid gray",
-    borderRadius: 7,
-
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     marginTop: 30,
     marginLeft: "2%",
+  },
+  carousel__content: {
+    boxShadow: "0 0 5px #d3d1d1",
+    width: "96%",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    padding: "2%",
   },
   carousel__title: {
     width: "100%",
     textAlign: "center",
-    background: "orange",
+    background: "#f89e2e",
     color: "#fff",
     fontSize: 45,
     margin: "0 0 10px 0",
-    borderRadius: "7px",
+    borderRadius: "7px 0",
   },
   carousel: {
     position: "relative",
