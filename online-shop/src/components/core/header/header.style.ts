@@ -112,6 +112,7 @@ export const userInteractionsStyles = createUseStyles({
     color: "#222121",
     border: "2px solid #b3b1b1",
     padding: 10,
+    textDecoration: "none",
 
     "&:hover": {
       cursor: "pointer",

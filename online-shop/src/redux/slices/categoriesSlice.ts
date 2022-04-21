@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { REQUEST_STATUS } from "../../constants/request.constants";
-import { ICategory } from "../../interfaces-types/categories.interface";
+import {
+  ICategory,
+  ISubCategory,
+} from "../../interfaces-types/categories.interface";
 import { getCategories } from "../../requests/categories.request";
 
 export const getCategoriesReducer = createAsyncThunk(
@@ -15,14 +18,25 @@ export const getCategoriesReducer = createAsyncThunk(
   }
 );
 
+function findSubCategory(categories: ICategory[], categoryName: string) {
+  const chosenCategory = categories.filter(
+    (category) => category.name === categoryName
+  )[0];
+  return chosenCategory.subCategories;
+}
+
 const categoriesSlice = createSlice({
   name: "categories",
   initialState: {
     status: "",
     categories: [] as ICategory[],
-    chosenCategory: {} as ICategory,
+    chosenCategory: [] as ISubCategory[],
   },
-  reducers: {},
+  reducers: {
+    updateChosenCategory: (state, action) => {
+      state.chosenCategory = findSubCategory(state.categories, action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCategoriesReducer.pending, (state) => {
       state.status = REQUEST_STATUS.pending;
@@ -30,6 +44,7 @@ const categoriesSlice = createSlice({
     builder.addCase(getCategoriesReducer.fulfilled, (state, action) => {
       state.status = REQUEST_STATUS.succes;
       state.categories = action.payload;
+      state.chosenCategory = action.payload[0].subCategories;
     });
     builder.addCase(getCategoriesReducer.rejected, (state) => {
       state.status = REQUEST_STATUS.error;
@@ -37,4 +52,5 @@ const categoriesSlice = createSlice({
   },
 });
 
+export const { updateChosenCategory } = categoriesSlice.actions;
 export default categoriesSlice.reducer;

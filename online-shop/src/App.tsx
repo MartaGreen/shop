@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/core/header/header";
 import Main from "./pages/main/main.page";
+import Catalog from "./pages/catalog/catalog.psge";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/catalog" element={<Catalog />} />
       </Routes>
     </Router>
   );

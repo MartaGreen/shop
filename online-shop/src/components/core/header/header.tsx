@@ -9,12 +9,7 @@ import Dropdown from "../../../shared/dropdown/dropdown";
 import { paymentDropdown, contactDropdown } from "./headerData";
 
 import SearchField from "./searchField/searchField";
-import { useDispatch } from "react-redux";
-
-import { getCategoriesReducer } from "../../../redux/slices/categoriesSlice";
-import { AppDispatch } from "../../../redux";
-import { useSelector } from "react-redux";
-import IStoreState from "../../../interfaces-types/store.interface";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [city, setCity] = useState("");
@@ -24,14 +19,6 @@ function Header() {
 
   const classes = styles();
   const userInteractionsClasses = userInteractionsStyles();
-
-  const dispatch: AppDispatch = useDispatch();
-  const storeData = useSelector((state: IStoreState) => state.categories);
-  console.log(storeData);
-
-  useEffect(() => {
-    dispatch(getCategoriesReducer());
-  }, []);
 
   return (
     <header className={classes.header}>
@@ -87,7 +74,10 @@ s2.5,1.1,2.5,2.5S13.4,11.5,12,11.5z"
         {/* Header user's field to intect with shop */}
         <div className={userInteractionsClasses.header__userInteractions}>
           {/* icon */}
-          <div className={userInteractionsClasses.userInteractions__icon}>
+          <Link
+            to="/"
+            className={userInteractionsClasses.userInteractions__icon}
+          >
             <>
               {/*?xml version="1.0" ?*/}
               <svg
@@ -544,10 +534,13 @@ s2.5,1.1,2.5,2.5S13.4,11.5,12,11.5z"
                 </g>
               </svg>
             </>
-          </div>
+          </Link>
 
           {/* catalog */}
-          <div className={userInteractionsClasses.userInteractions__item}>
+          <Link
+            to="/catalog"
+            className={userInteractionsClasses.userInteractions__item}
+          >
             <svg
               id="Filled"
               height="27px"
@@ -568,7 +561,7 @@ s2.5,1.1,2.5,2.5S13.4,11.5,12,11.5z"
             </svg>
 
             <span>Каталог</span>
-          </div>
+          </Link>
 
           {/* search field */}
           <div
