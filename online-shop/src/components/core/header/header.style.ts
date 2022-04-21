@@ -5,7 +5,7 @@ const styles = createUseStyles({
     position: "relative",
 
     minHeight: 100,
-    height: "20vh",
+    height: 150,
     minWidth: 300,
 
     background: "linear-gradient(180deg,#ff7700,#fdd26c)",
@@ -16,7 +16,7 @@ const styles = createUseStyles({
     fontWeight: "bold",
     fontSize: 18,
 
-    padding: "15px 2%",
+    padding: "10px 2%",
   },
   header__inner: {
     display: "flex",
@@ -76,7 +76,7 @@ const styles = createUseStyles({
       width: "60%",
     },
     header: {
-      height: "27vh",
+      height: 200,
     },
     header__dividingLine: {
       top: "35%",
@@ -120,7 +120,7 @@ export const userInteractionsStyles = createUseStyles({
   },
 
   userInteractions__icon: {
-    width: 60,
+    width: 55,
   },
 
   userInteractions__searchField: {
