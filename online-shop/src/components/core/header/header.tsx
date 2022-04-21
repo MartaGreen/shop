@@ -9,6 +9,12 @@ import Dropdown from "../../../shared/dropdown/dropdown";
 import { paymentDropdown, contactDropdown } from "./headerData";
 
 import SearchField from "./searchField/searchField";
+import { useDispatch } from "react-redux";
+
+import { getCategoriesReducer } from "../../../redux/slices/categoriesSlice";
+import { AppDispatch } from "../../../redux";
+import { useSelector } from "react-redux";
+import IStoreState from "../../../interfaces-types/store.interface";
 
 function Header() {
   const [city, setCity] = useState("");
@@ -18,6 +24,14 @@ function Header() {
 
   const classes = styles();
   const userInteractionsClasses = userInteractionsStyles();
+
+  const dispatch: AppDispatch = useDispatch();
+  const storeData = useSelector((state: IStoreState) => state.categories);
+  console.log(storeData);
+
+  useEffect(() => {
+    dispatch(getCategoriesReducer());
+  }, []);
 
   return (
     <header className={classes.header}>

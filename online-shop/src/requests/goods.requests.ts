@@ -4,9 +4,8 @@ import { IGood } from "../interfaces-types/goods.interface";
 const GOODS_REQUEST_URL = `${SHOP_REQUEST_URL}goods/`;
 
 export async function getGoodsForSales() {
-  const response: Response = await fetch(`${GOODS_REQUEST_URL}isInSale`);
-
   try {
+    const response: Response = await fetch(`${GOODS_REQUEST_URL}isInSale`);
     if (response.ok) {
       const goodsForSales: IGood[] = await response.json();
       return goodsForSales;
@@ -14,7 +13,7 @@ export async function getGoodsForSales() {
       throw new Error(response.statusText);
     }
   } catch (err) {
-    console.log("GoodsForSales request error. Status:", err);
+    console.log("GoodsForSales request error:", err);
     return null;
   }
 }
