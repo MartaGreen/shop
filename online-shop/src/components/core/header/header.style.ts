@@ -5,7 +5,8 @@ const styles = createUseStyles({
     position: "relative",
 
     minHeight: 100,
-    height: "16vh",
+    height: "20vh",
+    minWidth: 300,
 
     background: "linear-gradient(180deg,#ff7700,#fdd26c)",
     // linear-gradient(180deg,#ff7700,#fdd26c)
@@ -15,7 +16,7 @@ const styles = createUseStyles({
     fontWeight: "bold",
     fontSize: 18,
 
-    padding: "25px 2%",
+    padding: "15px 2%",
   },
   header__inner: {
     display: "flex",
@@ -26,7 +27,7 @@ const styles = createUseStyles({
     maxWidth: 1200,
     minWidth: 300,
     width: "100%",
-    height: "100%",
+    height: "94%",
 
     margin: "0 auto",
   },
@@ -74,6 +75,12 @@ const styles = createUseStyles({
     info__item: {
       width: "60%",
     },
+    header: {
+      height: "27vh",
+    },
+    header__dividingLine: {
+      top: "35%",
+    },
   },
   "@media (max-width: 425px)": {
     info__time: {
@@ -112,17 +119,41 @@ export const userInteractionsStyles = createUseStyles({
     },
   },
 
-  userInteractions__catalog: {},
+  userInteractions__icon: {
+    width: 60,
+  },
+
+  userInteractions__searchField: {
+    position: "relative",
+
+    width: "50%",
+    display: "flex",
+    justifyContent: "center",
+  },
 
   "@media (min-width: 425px)": {
     userInteractions__catalog: {
       display: "inline",
     },
   },
-  "@media (max-width: 600px)": {
-    userInteractions__item: {
-      width: 25,
 
+  "@media (max-width: 768px)": {
+    userInteractions__searchField: {
+      position: "absolute",
+      bottom: "40%",
+      left: "22%",
+
+      width: "75%",
+    },
+    userInteractions__icon: {
+      position: "absolute",
+      bottom: "36%",
+      left: "2%",
+    },
+  },
+  "@media (max-width: 375px)": {
+    userInteractions__item: {
+      width: 35,
       "& span": {
         display: "none",
       },
