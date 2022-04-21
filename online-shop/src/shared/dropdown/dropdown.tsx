@@ -3,14 +3,24 @@ import { useState } from "react";
 
 import styles from "./dropdown.style";
 
-function Dropdown({ name, content }: { name: string; content: string[] }) {
+function Dropdown({
+  name,
+  content,
+}: {
+  name: string;
+  content: string[] | JSX.Element;
+}) {
   const [isOpened, setIsOpened] = useState(false);
   const classes = styles();
-  const contentList = content.map((item, index) => (
-    <li className={classes.content__item} key={index}>
-      {item}
-    </li>
-  ));
+
+  console.log();
+  const contentList = Array.isArray(content)
+    ? content.map((item, index) => (
+        <li className={classes.content__item} key={index}>
+          {item}
+        </li>
+      ))
+    : content;
 
   return (
     <div
