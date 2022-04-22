@@ -8,6 +8,7 @@ import {
 } from "../../redux/slices/categoriesSlice";
 import { ICategory } from "../../interfaces-types/categories.interface";
 import styles from "./catalog.style";
+import { Link } from "react-router-dom";
 
 function Catalog() {
   const classes = styles();
@@ -16,20 +17,25 @@ function Catalog() {
   const storeData = useSelector((state: IStoreState) => state.categories);
   const categories = storeData.categories;
   const chosenCategory = storeData.chosenCategory;
+  const chosenCategoryId = storeData.chosenCategoryId;
   const categoriesTitle = categories.map((category: ICategory) => (
     <li
       key={category.id}
       // className={classes.categories__item}
       className={classes.categories__item}
-      onMouseOver={() => dispatch(updateChosenCategory(category.name))}
+      onMouseOver={() => dispatch(updateChosenCategory(category.id))}
     >
       {category.name}
     </li>
   ));
   const subCategoriesTitle = chosenCategory.map((subCategory) => (
-    <li key={subCategory.id} className={classes.subCategories__item}>
-      {subCategory.name}
-    </li>
+    <Link
+      to={`/goods/${chosenCategoryId}/${subCategory.id}`}
+      key={subCategory.id}
+      style={{ color: "black", textDecoration: "none" }}
+    >
+      <li className={classes.subCategories__item}>{subCategory.name}</li>
+    </Link>
   ));
 
   useEffect(() => {
@@ -37,14 +43,16 @@ function Catalog() {
   }, []);
 
   return (
-    <div className={classes.catalog}>
-      <div className={classes.catalog__categories}>
-        <ul className={classes.catalog__ul}>{categoriesTitle}</ul>
+    <main className="main">
+      <div className={classes.catalog}>
+        <div className={classes.catalog__categories}>
+          <ul className={classes.catalog__ul}>{categoriesTitle}</ul>
+        </div>
+        <div className={classes.catalog__subCategories}>
+          <ul className={classes.catalog__ul}>{subCategoriesTitle}</ul>
+        </div>
       </div>
-      <div className={classes.catalog__subCategories}>
-        <ul className={classes.catalog__ul}>{subCategoriesTitle}</ul>
-      </div>
-    </div>
+    </main>
   );
 }
 

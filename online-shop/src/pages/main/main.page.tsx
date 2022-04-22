@@ -8,8 +8,10 @@ function Main() {
   const classes = styles();
 
   return (
-    <main className={classes.main}>
-      <GoodForSales />
+    <main className="main">
+      <div className={classes.main}>
+        <GoodForSales />
+      </div>
     </main>
   );
 }

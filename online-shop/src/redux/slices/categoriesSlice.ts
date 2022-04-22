@@ -18,9 +18,9 @@ export const getCategoriesReducer = createAsyncThunk(
   }
 );
 
-function findSubCategory(categories: ICategory[], categoryName: string) {
+function findSubCategory(categories: ICategory[], categoryId: string) {
   const chosenCategory = categories.filter(
-    (category) => category.name === categoryName
+    (category) => category.id === categoryId
   )[0];
   return chosenCategory.subCategories;
 }
@@ -31,10 +31,12 @@ const categoriesSlice = createSlice({
     status: "",
     categories: [] as ICategory[],
     chosenCategory: [] as ISubCategory[],
+    chosenCategoryId: "",
   },
   reducers: {
     updateChosenCategory: (state, action) => {
       state.chosenCategory = findSubCategory(state.categories, action.payload);
+      state.chosenCategoryId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -45,6 +47,7 @@ const categoriesSlice = createSlice({
       state.status = REQUEST_STATUS.succes;
       state.categories = action.payload;
       state.chosenCategory = action.payload[0].subCategories;
+      state.chosenCategoryId = action.payload[0].id;
     });
     builder.addCase(getCategoriesReducer.rejected, (state) => {
       state.status = REQUEST_STATUS.error;

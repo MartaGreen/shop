@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.main {
+  position: relative;
+  max-width: 1200px;
+  min-width: 300px;
+  width: 94%;
+  margin: 0 auto;
+}

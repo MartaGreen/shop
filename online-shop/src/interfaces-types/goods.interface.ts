@@ -1,3 +1,8 @@
+export interface IGoodsInitialState {
+  status: string;
+  goods: IGood[];
+}
+
 export interface IGood {
   id: string;
   name: string;

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/core/header/header";
 import Main from "./pages/main/main.page";
 import Catalog from "./pages/catalog/catalog.psge";
+import Goods from "./pages/goods/goods.page";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/goods/:categoryId/:subCategoryId" element={<Goods />} />
       </Routes>
     </Router>
   );
