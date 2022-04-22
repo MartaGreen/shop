@@ -10,7 +10,7 @@ const styles = createUseStyles({
     maxWidth: 1200,
 
     margin: "0 auto",
-    padding: "30px 2%",
+    padding: "0 2%",
   },
 
   catalog__categories: {

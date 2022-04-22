@@ -23,8 +23,11 @@ const goodsListSlice = createSlice({
   initialState: {
     status: "",
     goods: [] as IGood[],
+    chosenFilter: "",
   },
-  reducers: {},
+  reducers: {
+    filter: (state, action) => {},
+  },
   extraReducers: (builder) => {
     builder.addCase(getGoodsReducer.pending, (state) => {
       state.status = REQUEST_STATUS.pending;

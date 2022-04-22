@@ -8,7 +8,6 @@ const styles = createUseStyles({
 
     display: "flex",
     flexDirection: "column",
-    marginTop: 30,
     marginLeft: "2%",
   },
   carousel__content: {
