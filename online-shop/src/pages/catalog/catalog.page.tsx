@@ -43,16 +43,14 @@ function Catalog() {
   }, []);
 
   return (
-    <main className="main">
-      <div className={classes.catalog}>
-        <div className={classes.catalog__categories}>
-          <ul className={classes.catalog__ul}>{categoriesTitle}</ul>
-        </div>
-        <div className={classes.catalog__subCategories}>
-          <ul className={classes.catalog__ul}>{subCategoriesTitle}</ul>
-        </div>
+    <div className={classes.catalog}>
+      <div className={classes.catalog__categories}>
+        <ul className={classes.catalog__ul}>{categoriesTitle}</ul>
       </div>
-    </main>
+      <div className={classes.catalog__subCategories}>
+        <ul className={classes.catalog__ul}>{subCategoriesTitle}</ul>
+      </div>
+    </div>
   );
 }
 

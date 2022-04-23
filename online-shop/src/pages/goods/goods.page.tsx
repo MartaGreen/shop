@@ -29,11 +29,7 @@ function Goods() {
 
   const goodsHTML = goods.map((good) => <Good data={good} key={good.id} />);
 
-  return (
-    <main className="main">
-      <div className={classes.goods}>{goodsHTML}</div>
-    </main>
-  );
+  return <div className={classes.goods}>{goodsHTML}</div>;
 }
 
 export default Goods;

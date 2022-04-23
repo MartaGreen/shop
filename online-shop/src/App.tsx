@@ -14,12 +14,14 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path="/goods/:categoryId/:subCategoryId" element={<Goods />} />
-        <Route path="/goods/item/:goodId" element={<GoodDetails />} />
-      </Routes>
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/goods/:categoryId/:subCategoryId" element={<Goods />} />
+          <Route path="/goods/item/:goodId" element={<GoodDetails />} />
+        </Routes>
+      </main>
     </Router>
   );
 }

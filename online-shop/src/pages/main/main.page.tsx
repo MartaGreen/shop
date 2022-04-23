@@ -8,11 +8,9 @@ function Main() {
   const classes = styles();
 
   return (
-    <main className="main">
-      <div className={classes.main}>
-        <GoodForSales />
-      </div>
-    </main>
+    <div className={classes.main}>
+      <GoodForSales />
+    </div>
   );
 }
 
