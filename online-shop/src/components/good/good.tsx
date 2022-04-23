@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IGood } from "../../interfaces-types/goods.interface";
 import styles from "./good.styles";
+import { RATING_ICON_HTML } from "../../constants/icon.constants";
 
 function Good({ data }: { data: IGood }) {
   const classes = styles();
@@ -43,54 +44,8 @@ function defineAvailibilityColor(availableAmount: number) {
 function generateRating(rating: number) {
   const ratingItemsCount: number = 5;
   const result = [];
-  for (let i = 0; i < ratingItemsCount; i++) {
-    result.unshift(
-      <svg
-        width="20px"
-        height="19px"
-        viewBox="0 0 20 19"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-      >
-        <title>star</title>
-        <desc>Created with Sketch.</desc>
-        <g
-          id="Icons"
-          stroke="none"
-          strokeWidth={1}
-          fill="none"
-          fillRule="evenodd"
-        >
-          <g id="Two-Tone" transform="translate(-272.000000, -4322.000000)">
-            <g id="Toggle" transform="translate(100.000000, 4266.000000)">
-              <g
-                id="-Two-Tone-/-Toggle-/-star"
-                transform="translate(170.000000, 54.000000)"
-              >
-                <g id="Two-Tone-/-Toggle-/-star">
-                  <polygon
-                    id="Path"
-                    fillRule="nonzero"
-                    points="0 0 24 0 24 24 0 24"
-                  />
-                  <polygon
-                    id="🔹-Secondary-Color"
-                    fill={i < rating ? "#f9c259" : "gray"}
-                    points="12 15.4 8.24 17.67 9.24 13.39 5.92 10.51 10.3 10.13 12 6.1 13.71 10.14 18.09 10.52 14.77 13.4 15.77 17.68"
-                  ></polygon>
-                  <path
-                    d="M22,9.24 L14.81,8.62 L12,2 L9.19,8.63 L2,9.24 L7.46,13.97 L5.82,21 L12,17.27 L18.18,21 L16.55,13.97 L22,9.24 Z M12,15.4 L8.24,17.67 L9.24,13.39 L5.92,10.51 L10.3,10.13 L12,6.1 L13.71,10.14 L18.09,10.52 L14.77,13.4 L15.77,17.68 L12,15.4 Z"
-                    id="🔹-Primary-Color"
-                    fill={i < rating ? "#f75c06" : "black"}
-                  />
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </svg>
-    );
+  for (let i: number = 0; i < ratingItemsCount; i++) {
+    result.unshift(RATING_ICON_HTML(i, rating));
   }
   return result;
 }
