@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IGood } from "../../interfaces-types/goods.interface";
 import styles from "./good.styles";
-import { RATING_ICON_HTML } from "../../constants/icon.constants";
+import {
+  RATING_ICON_HTML,
+  SALES_ICON_HTML,
+} from "../../constants/icon.constants";
 
 function Good({ data }: { data: IGood }) {
   const classes = styles();
@@ -12,9 +15,15 @@ function Good({ data }: { data: IGood }) {
   );
   const ratingHTML = generateRating(data.rating);
   const price: string = `₽${parseFloat(data.price.toString()).toFixed(2)}`;
+  const salesIcon = data.isInSale ? (
+    <div className={classes.good__sales}>{SALES_ICON_HTML}</div>
+  ) : (
+    ""
+  );
 
   return (
     <Link to={`/goods/item/${data.id}`} className={classes.good}>
+      {salesIcon}
       <div className={classes.good__imgContainer}>
         <img
           src={data.imageUrls[0]}
