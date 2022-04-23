@@ -11,6 +11,7 @@ import styles from "./goodsForSales.style";
 
 import imgNotFound_src from "../../assets/img_not_found.png";
 import { SALES_ICON_HTML } from "../../constants/icon.constants";
+import GoodsCarousel from "../goodsCarousel/goodsCarousel";
 
 function GoodForSales() {
   const [goodsForSales, setGoodsForSales] = useState([] as IGood[]);
@@ -38,52 +39,28 @@ function GoodForSales() {
     slidesToShow: 1,
     slidesToScroll: 1,
 
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     autoplay: true,
   };
 
-  const loadingIcon = "Loading ...";
-
-  const goodsList = goodsForSales.map((good) => (
-    <div className={classes.carouselItem} key={good.id}>
-      <img
-        className={classes.carouselItem__img}
-        src={good.imageUrls[0] ? good.imageUrls[0] : imgNotFound_src}
-        alt={good.name}
-        onError={(e) =>
-          (e.target as HTMLImageElement).setAttribute("src", imgNotFound_src)
-        }
-      />
-      <p className="legend">{good.name}</p>
-    </div>
-  ));
-  const carousel = (
-    <div className={classes.carousel__content}>
-      <div className={classes.salesIcon}>{SALES_ICON_HTML}</div>
-      <Slider className={classes.carousel} {...settings}>
-        {goodsList}
-      </Slider>
-    </div>
-  );
+  const slides: {
+    id: string;
+    name: string | null;
+    imgUrl: string;
+  }[] = goodsForSales.map((data) => ({
+    id: data.id,
+    name: data.name,
+    imgUrl: data.imageUrls[0],
+  }));
 
   return (
-    <div className={classes.carouselContainer}>
-      <h1 className={classes.carousel__title}>Sales</h1>
-
-      {status === REQUEST_STATUS.pending ? (
-        <div
-          style={{ display: "flex", justifyContent: "center", width: "100%" }}
-        >
-          {loadingIcon}
-        </div>
-      ) : status === REQUEST_STATUS.error ? (
-        <div style={{ textAlign: "center" }}>
-          Cannot connect to server. Try later!
-        </div>
-      ) : (
-        carousel
-      )}
-    </div>
+    <GoodsCarousel
+      slides={slides}
+      settings={settings}
+      status={status}
+      isInSale={true}
+      title={"Sales"}
+    />
   );
 }
 
