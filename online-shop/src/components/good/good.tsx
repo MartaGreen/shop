@@ -6,6 +6,7 @@ import {
   RATING_ICON_HTML,
   SALES_ICON_HTML,
 } from "../../constants/icon.constants";
+import imgNotFound_src from "../../assets/img_not_found.png";
 
 function Good({ data }: { data: IGood }) {
   const classes = styles();
@@ -26,9 +27,12 @@ function Good({ data }: { data: IGood }) {
       {salesIcon}
       <div className={classes.good__imgContainer}>
         <img
-          src={data.imageUrls[0]}
+          src={data.imageUrls[0] ? data.imageUrls[0] : imgNotFound_src}
           className={classes.good__img}
           alt="good's picture"
+          onError={(e) =>
+            (e.target as HTMLImageElement).setAttribute("src", imgNotFound_src)
+          }
         />
       </div>
       <span style={{ textAlign: "center" }}>{data.name}</span>

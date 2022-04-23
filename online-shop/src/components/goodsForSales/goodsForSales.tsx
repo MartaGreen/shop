@@ -50,6 +50,9 @@ function GoodForSales() {
         className={classes.carouselItem__img}
         src={good.imageUrls[0] ? good.imageUrls[0] : imgNotFound_src}
         alt={good.name}
+        onError={(e) =>
+          (e.target as HTMLImageElement).setAttribute("src", imgNotFound_src)
+        }
       />
       <p className="legend">{good.name}</p>
     </div>
