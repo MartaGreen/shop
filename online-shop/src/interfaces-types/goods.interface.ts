@@ -17,3 +17,8 @@ export interface IGood {
   category: string;
   subCategory: string;
 }
+
+export interface IGoodDetailsInitialState {
+  status: string;
+  goodDetails: IGood;
+}

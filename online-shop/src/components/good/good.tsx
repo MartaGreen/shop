@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IGood } from "../../interfaces-types/goods.interface";
 import styles from "./good.styles";
 
@@ -12,7 +13,7 @@ function Good({ data }: { data: IGood }) {
   const price: string = `₽${parseFloat(data.price.toString()).toFixed(2)}`;
 
   return (
-    <div className={classes.good}>
+    <Link to={`/goods/item/${data.id}`} className={classes.good}>
       <div className={classes.good__imgContainer}>
         <img
           src={data.imageUrls[0]}
@@ -29,7 +30,7 @@ function Good({ data }: { data: IGood }) {
       <div className={classes.good_rating}>{ratingHTML}</div>
       <span>{price}</span>
       <div></div>
-    </div>
+    </Link>
   );
 }
 

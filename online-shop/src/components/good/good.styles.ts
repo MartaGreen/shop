@@ -8,6 +8,9 @@ const styles = createUseStyles({
     justifyContent: "space-between",
 
     minHeight: 300,
+
+    textDecoration: "none",
+    color: "black",
   },
 
   good__imgContainer: {
