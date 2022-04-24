@@ -1,9 +1,12 @@
 import React from "react";
-import styles from "./goodsCarousel.style";
+
 import imgNotFound_src from "../../assets/img_not_found.png";
 import { SALES_ICON_HTML } from "../../constants/icon.constants";
-import Slider from "react-slick";
 import { REQUEST_STATUS } from "../../constants/request.constants";
+import Slider from "react-slick";
+
+import styles from "./goodsCarousel.style";
+import "./goodCarousel.css";
 
 function GoodsCarousel({
   slides,
