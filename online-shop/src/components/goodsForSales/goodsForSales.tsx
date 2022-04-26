@@ -28,7 +28,7 @@ function GoodForSales() {
   }, []);
 
   var settings = {
-    arrows: false,
+    arrows: true,
     dots: false,
     infinite: true,
     speed: 500,
@@ -39,19 +39,21 @@ function GoodForSales() {
     autoplay: true,
   };
 
-  const slides: {
+  const slidesData: {
     id: string;
     name: string | null;
     imgUrl: string;
-  }[] = goodsForSales.map((data) => ({
+    goodId: string;
+  }[] = goodsForSales.map((data: IGood) => ({
     id: data.id,
     name: data.name,
     imgUrl: data.imageUrls[0],
+    goodId: data.id,
   }));
 
   return (
     <GoodsCarousel
-      slides={slides}
+      slides={slidesData}
       settings={settings}
       status={status}
       isInSale={true}

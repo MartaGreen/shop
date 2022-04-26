@@ -19,6 +19,7 @@ function Catalog() {
   const categories = storeData.categories;
   const chosenCategory = storeData.chosenCategorySubCategories;
   const chosenCategoryId = storeData.chosenCategoryId;
+
   const categoriesTitle = categories.map((category: ICategory) => (
     <li
       key={category.id}

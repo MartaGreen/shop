@@ -7,6 +7,8 @@ import Slider from "react-slick";
 
 import styles from "./goodsCarousel.style";
 import "./goodCarousel.css";
+import { useNavigate } from "react-router";
+import { IGood } from "../../interfaces-types/goods.interface";
 
 function GoodsCarousel({
   slides,
@@ -15,7 +17,12 @@ function GoodsCarousel({
   isInSale,
   title,
 }: {
-  slides: { id: string; name: string | null; imgUrl: string }[];
+  slides: {
+    id: string;
+    name: string | null;
+    imgUrl: string;
+    goodId?: string;
+  }[];
   settings: {};
   status: string;
   isInSale: boolean;
@@ -23,38 +30,38 @@ function GoodsCarousel({
 }) {
   const classes = styles();
   const loadingIcon = "Loading ...";
+  const navigate = useNavigate();
 
-  const goodsList = slides.map((slide) => (
+  const carouselSlidesJSX = slides.map((slide) => (
     <div
       className={classes.carouselItem}
       key={slide.id}
       title={`${slide.name ? slide.name : ""}`}
+      onClick={() => {
+        if (slide.goodId) navigate(`/goods/item/${slide.goodId}`);
+      }}
     >
       <img
         className={classes.carouselItem__img}
         src={slide.imgUrl ? slide.imgUrl : imgNotFound_src}
         alt={slide.name ? slide.name : "pic"}
+        style={{ cursor: slide.goodId ? "pointer" : "default" }}
         onError={(e) =>
           (e.target as HTMLImageElement).setAttribute("src", imgNotFound_src)
         }
       />
-      {/* <p
-        className="legend"
-        style={{ display: `${slide.name ? "inline" : "none"}` }}
-      >
-        {slide.name}
-      </p> */}
     </div>
   ));
-  const carousel = (
+
+  const carouselJSX = (
     <div className={classes.carousel__content}>
       {isInSale ? (
         <div className={classes.salesIcon}>{SALES_ICON_HTML}</div>
       ) : (
-        <div />
+        ""
       )}
       <Slider className={classes.carousel} {...settings}>
-        {goodsList}
+        {carouselSlidesJSX}
       </Slider>
     </div>
   );
@@ -73,7 +80,7 @@ function GoodsCarousel({
           Cannot connect to server. Try later!
         </div>
       ) : (
-        carousel
+        carouselJSX
       )}
     </div>
   );
