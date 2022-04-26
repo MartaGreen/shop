@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import GoodsCarousel from "../goodsCarousel/goodsCarousel";
+import { Link } from "react-router-dom";
 
 function GoodForSales() {
   const [goodsForSales, setGoodsForSales] = useState([] as IGood[]);

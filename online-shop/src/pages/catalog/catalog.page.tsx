@@ -17,12 +17,11 @@ function Catalog() {
   const dispatch: AppDispatch = useDispatch();
   const storeData = useSelector((state: IStoreState) => state.categories);
   const categories = storeData.categories;
-  const chosenCategory = storeData.chosenCategory;
+  const chosenCategory = storeData.chosenCategorySubCategories;
   const chosenCategoryId = storeData.chosenCategoryId;
   const categoriesTitle = categories.map((category: ICategory) => (
     <li
       key={category.id}
-      // className={classes.categories__item}
       className={classes.categories__item}
       onMouseOver={() => dispatch(updateChosenCategory(category.id))}
     >

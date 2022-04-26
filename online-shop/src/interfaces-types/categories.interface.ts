@@ -1,7 +1,7 @@
 export interface ICategoriesSliceInitState {
   status: string;
   categories: ICategory[];
-  chosenCategory: ISubCategory[];
+  chosenCategorySubCategories: ISubCategory[];
   chosenCategoryId: string;
 }
 

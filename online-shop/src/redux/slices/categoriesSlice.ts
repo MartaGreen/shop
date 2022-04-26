@@ -30,12 +30,15 @@ const categoriesSlice = createSlice({
   initialState: {
     status: "",
     categories: [] as ICategory[],
-    chosenCategory: [] as ISubCategory[],
+    chosenCategorySubCategories: [] as ISubCategory[],
     chosenCategoryId: "",
   },
   reducers: {
     updateChosenCategory: (state, action) => {
-      state.chosenCategory = findSubCategory(state.categories, action.payload);
+      state.chosenCategorySubCategories = findSubCategory(
+        state.categories,
+        action.payload
+      );
       state.chosenCategoryId = action.payload;
     },
   },
@@ -46,7 +49,7 @@ const categoriesSlice = createSlice({
     builder.addCase(getCategoriesReducer.fulfilled, (state, action) => {
       state.status = REQUEST_STATUS.succes;
       state.categories = action.payload;
-      state.chosenCategory = action.payload[0].subCategories;
+      state.chosenCategorySubCategories = action.payload[0].subCategories;
       state.chosenCategoryId = action.payload[0].id;
     });
     builder.addCase(getCategoriesReducer.rejected, (state) => {
