@@ -7,8 +7,9 @@ import {
   updateChosenCategory,
 } from "../../redux/slices/categoriesSlice";
 import { ICategory } from "../../interfaces-types/categories.interface";
-import styles from "./catalog.style";
 import { Link } from "react-router-dom";
+
+import styles from "./catalog.style";
 
 function Catalog() {
   const classes = styles();

@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux";
+
 import { useParams } from "react-router-dom";
 import Good from "../../components/good/good";
 import { IGood } from "../../interfaces-types/goods.interface";
 import IStoreState from "../../interfaces-types/store.interface";
-import { AppDispatch } from "../../redux";
 import { getGoodsReducer } from "../../redux/slices/goodsListSlice";
 import styles from "./goods.style";
 
