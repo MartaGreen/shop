@@ -9,6 +9,10 @@ const style = createUseStyles({
 
     "&:hover": {
       cursor: "pointer",
+
+      '.dropdown__content': {
+        display: 'block',
+      }
     },
   },
   dropdown__name: {
@@ -37,7 +41,7 @@ const style = createUseStyles({
 
   dropdown__content: {
     position: "absolute",
-    top: 20,
+    top: 18,
     right: 0,
 
     minWidth: 200,
@@ -48,14 +52,6 @@ const style = createUseStyles({
     backgroundClip: "padding-box",
     border: "1px solid rgba(0,0,0,.15)",
     borderRadius: "0.25rem",
-  },
-  content__item: {
-    listStyle: "none",
-    margin: "5px 0",
-
-    "&:hover": {
-      background: "#eaecef",
-    },
   },
 });
 

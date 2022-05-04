@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import getUserLocation from "../../../requests/userLocation.request";
 import styles, { userInteractionsStyles } from "./header.style";
 
-import Dropdown from "../../../shared/dropdown/dropdown";
+import InfoList from "../infoList/infoList";
 import { paymentDropdown, contactDropdown } from "./headerData";
 
-import SearchField from "./searchField/searchField";
+import SearchField from "../searchField/searchField";
 import { Link } from "react-router-dom";
 import {
   LOCATION_ICON_HTML,
@@ -39,10 +39,10 @@ function Header() {
 
           <div className={classes.info__item}>
             <div>
-              <Dropdown name={"Оплата"} content={paymentDropdown} />
+              <InfoList name={"Оплата"} content={paymentDropdown} />
             </div>
             <div>
-              <Dropdown name={"Контакты"} content={contactDropdown} />
+              <InfoList name={"Контакты"} content={contactDropdown} />
             </div>
             <div className={classes.info__time}>
               Контакт-центр <br /> с 8:00 до 22:00
