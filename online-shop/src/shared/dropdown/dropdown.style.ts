@@ -4,7 +4,8 @@ const style = createUseStyles({
   dropdownContainer: {
     position: "relative",
 
-    color: "rgb(71, 70, 70)",
+    // color: "rgb(71, 70, 70)",
+    color: 'black',
     fontSize: 15,
 
     "&:hover": {

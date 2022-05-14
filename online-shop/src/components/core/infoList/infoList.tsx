@@ -3,13 +3,7 @@ import styles from "./infoList.style";
 
 import Dropdown from "../../../shared/dropdown/dropdown";
 
-function InfoList({
-  name,
-  content,
-}: {
-  name: string;
-  content: string[] | JSX.Element;
-}) {
+function InfoList({ name, content }: { name: string; content: string[] }) {
   const classes = styles();
 
   const contentList = Array.isArray(content)

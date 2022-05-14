@@ -7,6 +7,7 @@ import styles, { userInteractionsStyles } from "./header.style";
 
 import InfoList from "../infoList/infoList";
 import { paymentDropdown, contactDropdown } from "./headerData";
+import UserDropdown from "../../auth/userDropdown/userDropdown";
 
 import SearchField from "../searchField/searchField";
 import { Link } from "react-router-dom";
@@ -56,32 +57,28 @@ function Header() {
         <div className={userInteractionsClasses.header__userInteractions}>
           {/* icon */}
           <Link
-            to="/"
-            className={userInteractionsClasses.userInteractions__icon}
-          >
+            to='/'
+            className={userInteractionsClasses.userInteractions__icon}>
             {SHOP_ICON_HTML}
           </Link>
 
           {/* catalog */}
           <Link
-            to="/catalog"
-            className={userInteractionsClasses.userInteractions__item}
-          >
+            to='/catalog'
+            className={userInteractionsClasses.userInteractions__item}>
             {CATALOG_ICON_HTML}
             <span>Каталог</span>
           </Link>
 
           {/* search field */}
           <div
-            className={userInteractionsClasses.userInteractions__searchField}
-          >
+            className={userInteractionsClasses.userInteractions__searchField}>
             <SearchField />
           </div>
 
           {/* user */}
           <div className={userInteractionsClasses.userInteractions__item}>
-            {USER_ICON_HTML}
-            <span>Аккаунт</span>
+            <UserDropdown />
           </div>
 
           {/* cart */}

@@ -1,13 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useState } from "react";
+import { JsxElement } from "typescript";
 
 import styles from "./dropdown.style";
 
 function Dropdown({
   name,
+  icon,
   children,
 }: {
-  name: string;
+  name: string | JSX.Element;
+  icon?: JSX.Element;
   children: React.ReactNode;
 }) {
   const [isOpened, setIsOpened] = useState(false);
@@ -19,6 +22,7 @@ function Dropdown({
       onMouseOver={() => setIsOpened(true)}
       onMouseOut={() => setIsOpened(false)}>
       <div className={classes.dropdown__name}>
+        {icon ? icon : ""}
         <span>{name}</span>
         <div className={classes.dropdown__icon}></div>{" "}
       </div>
