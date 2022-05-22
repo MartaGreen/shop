@@ -4,8 +4,16 @@
   "description": "server for my online shop",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts "
   },
   "author": "Mariia",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "ts-node": "^10.8.0",
+    "typeorm": "^0.3.6",
+    "typescript": "^4.6.4"
+  }
 }
