@@ -12,24 +12,34 @@ router.get("/", async (req, res) => {
   //   .from(User, "u")
   //   .getMany();
   // console.log(customer);
-  const userRepository = AppDataSource.getRepository(User);
-  const customers = await userRepository.find();
-  res.send(customers);
+  try {
+    const userRepository = AppDataSource.getRepository(User);
+    const customers = await userRepository.find();
+    res.status(200).send(customers);
+  } catch (err) {
+    console.error(err);
+    res.status(404).send("Unable to get users");
+  }
 });
 
 router.post("/", async (req, res) => {
-  const customerData: ICreateUserData = req.body;
-  const customer = new User();
-  customer.Name = customerData.name;
-  customer.Surname = customerData.surname;
-  customer.Email = customerData.email;
-  customer.Password = customerData.password;
-  customer.Avatar = customerData.avatar;
+  try {
+    const customerData: ICreateUserData = req.body;
+    const customer = new User();
+    customer.Name = customerData.name;
+    customer.Surname = customerData.surname;
+    customer.Email = customerData.email;
+    customer.Password = customerData.password;
+    customer.Avatar = customerData.avatar;
 
-  const userRepository = AppDataSource.getRepository(User);
-  await userRepository.save(customer);
+    const userRepository = AppDataSource.getRepository(User);
+    await userRepository.save(customer);
 
-  res.send("create new user");
+    res.status(201).send("User created successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Unable to create user");
+  }
 });
 
 export default router;
