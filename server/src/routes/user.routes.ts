@@ -1,20 +1,20 @@
 import { Router } from "express";
 import { User } from "../entity/user/user";
 import { ICreateUserData } from "src/interfaces/user.interface";
-import { getConnection } from "typeorm";
-
-import generateUniqueId, { idPrefixes } from "../shared/idGenerator";
+import { AppDataSource } from "../entity/connection";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const customer = await getConnection()
-    .createQueryBuilder()
-    .select("u")
-    .from(User, "u")
-    .getMany();
-  console.log(customer);
-  res.send(customer);
+  // const customer = await getConnection()
+  //   .createQueryBuilder()
+  //   .select("u")
+  //   .from(User, "u")
+  //   .getMany();
+  // console.log(customer);
+  const userRepository = AppDataSource.getRepository(User);
+  const customers = await userRepository.find();
+  res.send(customers);
 });
 
 router.post("/", async (req, res) => {
@@ -26,11 +26,8 @@ router.post("/", async (req, res) => {
   customer.Password = customerData.password;
   customer.Avatar = customerData.avatar;
 
-  // const PersonalId: string = generateUniqueId(idPrefixes.user);
-  // customer.PersonalId = PersonalId;
-
-  const connection = await getConnection();
-  await connection.manager.save(customer);
+  const userRepository = AppDataSource.getRepository(User);
+  await userRepository.save(customer);
 
   res.send("create new user");
 });
