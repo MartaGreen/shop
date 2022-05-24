@@ -1,17 +1,18 @@
 import express from "express";
-import main from "./database/connection";
+import main from "./entity/connection";
 
 // routes
-import userRoter from "./routes/user";
+import userRouter from "./routes/user.routes";
 
 const app = express();
+app.use(express.json());
 const port = Number(process.env.PORT) | 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
 
-app.use("/user", userRoter);
+app.use("/user", userRouter);
 
 app.listen(port, () => {
   console.log(`Server listening on ${port}`);

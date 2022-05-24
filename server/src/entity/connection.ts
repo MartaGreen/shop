@@ -1,6 +1,8 @@
 import "dotenv/config";
 import { createConnection } from "typeorm";
 
+import { User } from "./user/user";
+
 const main = async () => {
   try {
     await createConnection({
@@ -10,9 +12,12 @@ const main = async () => {
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
+      synchronize: true,
+      logging: true,
       extra: {
         ssl: { rejectUnauthorized: false },
       },
+      entities: [User],
     });
     console.log("Connected to database");
   } catch (err) {
